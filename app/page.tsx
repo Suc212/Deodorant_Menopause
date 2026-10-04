@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { ArrowRight, Heart, Minus, Plus } from "lucide-react"
+import { ArrowRight, Minus, Plus } from "lucide-react"
 import OrderForm from "@/components/order-form"
 import { benefits, formatPrice, ingredientDetails, product, relatedProducts, reviews, steps } from "@/lib/product"
 import { Button } from "@/components/ui/button"
@@ -33,7 +33,7 @@ function BuyBox({ selectedPackageId, onPackageChange }: { selectedPackageId: str
   const [qty, setQty] = React.useState(1)
   const [tab, setTab] = React.useState(0)
   const activeOption = product.options.find((item) => item.id === selectedPackageId) ?? product.options[0]
-  return <div className="buy"><span className="badge">{product.badge}</span><h1>{product.name}</h1><div className="sub"><span>{product.category}</span><span>Size: {product.size}</span><span className="stars">{product.rating}/5</span></div><div className="priceRow"><span className="price">{formatPrice(activeOption.price)}</span><span>{product.paymentNote}</span></div><div className="pill">{product.popularity}</div><p className="lede">{product.description}</p><div className="mini">Amount and package</div><div className="qty"><button onClick={()=>setQty(Math.max(1, qty-1))} aria-label="Decrease"><Minus size={16}/></button><span>{qty}</span><button onClick={()=>setQty(qty+1)} aria-label="Increase"><Plus size={16}/></button><small>Formula: {product.scent}</small></div>{product.options.map(o=><label className="opt" key={o.id}><span><input type="radio" checked={selectedPackageId===o.id} onChange={()=>onPackageChange(o.id)}/>{o.detail}</span><b>{formatPrice(o.price)}</b></label>)}<Button onClick={scrollToOrderForm}>Order Deos</Button><Button variant="line" type="button"><Heart size={16}/> Favorite</Button><div className="tabs">{product.tabs.map((t,i)=><button key={t[0]} aria-selected={tab===i} onClick={()=>setTab(i)}>{t[0]}</button>)}</div><div className="panel"><p>{product.tabs[tab][1]}</p></div></div>
+  return <div className="buy"><span className="badge">{product.badge}</span><h1>{product.name}</h1><div className="sub"><span>{product.category}</span><span>Size: {product.size}</span><span className="stars">{product.rating}/5</span></div><div className="priceRow"><span className="price">{formatPrice(activeOption.price)}</span><span>{product.paymentNote}</span></div><div className="pill">{product.popularity}</div><p className="lede">{product.description}</p><div className="mini">Amount and package</div><div className="qty"><button onClick={()=>setQty(Math.max(1, qty-1))} aria-label="Decrease"><Minus size={16}/></button><span>{qty}</span><button onClick={()=>setQty(qty+1)} aria-label="Increase"><Plus size={16}/></button><small>Formula: {product.scent}</small></div>{product.options.map(o=><label className="opt" key={o.id}><span><input type="radio" checked={selectedPackageId===o.id} onChange={()=>onPackageChange(o.id)}/>{o.detail}</span><b>{formatPrice(o.price)}</b></label>)}<Button onClick={scrollToOrderForm}>Order Deos</Button><div className="tabs">{product.tabs.map((t,i)=><button key={t[0]} aria-selected={tab===i} onClick={()=>setTab(i)}>{t[0]}</button>)}</div><div className="panel"><p>{product.tabs[tab][1]}</p></div></div>
 }
 
 function Hero({ selectedPackageId, onPackageChange }: { selectedPackageId: string; onPackageChange: (packageId: string) => void }){ return <header className="hero" id="top"><Gallery/><BuyBox selectedPackageId={selectedPackageId} onPackageChange={onPackageChange}/></header> }
