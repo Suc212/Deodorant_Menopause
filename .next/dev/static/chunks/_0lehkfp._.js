@@ -673,8 +673,8 @@ function How() {
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "ph image-ph",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                        src: "/deos-body-deodorizer-987562.webp",
-                        alt: "Deos capsules and bottle"
+                        src: "/Twin Deos Bottles on Wet Tropical Leaf.png",
+                        alt: "Twin Deos bottles on wet tropical leaf"
                     }, void 0, false, {
                         fileName: "[project]/app/page.tsx",
                         lineNumber: 41,
@@ -692,7 +692,7 @@ function How() {
                         }, void 0, false, {
                             fileName: "[project]/app/page.tsx",
                             lineNumber: 41,
-                            columnNumber: 183
+                            columnNumber: 207
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ol", {
                             className: "steps",
@@ -703,25 +703,25 @@ function How() {
                                         }, void 0, false, {
                                             fileName: "[project]/app/page.tsx",
                                             lineNumber: 41,
-                                            columnNumber: 291
+                                            columnNumber: 315
                                         }, this),
                                         text
                                     ]
                                 }, title, true, {
                                     fileName: "[project]/app/page.tsx",
                                     lineNumber: 41,
-                                    columnNumber: 275
+                                    columnNumber: 299
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/app/page.tsx",
                             lineNumber: 41,
-                            columnNumber: 226
+                            columnNumber: 250
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/page.tsx",
                     lineNumber: 41,
-                    columnNumber: 178
+                    columnNumber: 202
                 }, this)
             ]
         }, void 0, true, {
@@ -804,8 +804,8 @@ function Ingredients() {
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "ph image-ph",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                        src: "/IngredientsBreakdown.webp",
-                        alt: "Deos ingredient breakdown"
+                        src: "/Falling Green Capsules and Fresh Herbs.png",
+                        alt: "Falling green capsules and fresh herbs"
                     }, void 0, false, {
                         fileName: "[project]/app/page.tsx",
                         lineNumber: 42,
