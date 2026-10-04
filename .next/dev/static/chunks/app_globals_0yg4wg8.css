@@ -904,11 +904,11 @@ footer p span {
 }
 
 .product-photo img {
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   width: 100%;
   height: 100%;
-  padding: 0;
+  padding: 12px;
   display: block;
 }
 

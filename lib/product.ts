@@ -20,8 +20,8 @@ export const product = {
     "/Deos with model.png",
     "/Floating Deos bottle in sage light.png",
     "/Twin Deos Bottles on Wet Tropical Leaf.png",
-    "/deos-body-deodorizer-500758.webp",
-    "/IngredientsBreakdown.webp"
+    "/Deos bottles with fresh mint and herbs.png",
+    "/Falling Green Capsules and Fresh Herbs.png"
   ],
   options: [
     { id: "1-bottle-450", label: "1 Bottle + Free Delivery", detail: "1 Bottle + Free Delivery", price: 450 },
