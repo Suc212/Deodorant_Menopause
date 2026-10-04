@@ -38,7 +38,7 @@ export const product = {
 
 export const benefits = [
   ["Hormonal freshness support", "Made for women who notice stronger body odor, sweat changes or intimate freshness concerns during perimenopause and menopause."],
-  ["Freshness from within", "Supports internal odor control instead of only covering changes with perfume or external deodorant."],
+  ["Freshness from within", "Because the odor can be linked to hormonal changes, covering it only on the outside with perfume or deodorant may not be enough. Deos supports freshness from within."],
   ["Gentle daily routine", "Chlorophyllin and mint create a simple once-daily habit that fits easily into your menopause wellness routine."]
 ]
 
@@ -55,9 +55,9 @@ export const ingredientDetails = [
 ]
 
 export const reviews = [
-  ["Since perimenopause started, I became more conscious of sweat and body odor. Deos helped me feel fresher through the day.", "Ama, Accra", "5/5"],
-  ["Hot flashes made me worry about odor at work. This became a simple part of my morning routine.", "Esi, Kumasi", "5/5"],
-  ["During menopause my body changed, and I wanted something gentle that worked from within. I like how easy Deos is to take.", "Akua, Tema", "4.5/5"]
+  ["My body odor changed so much around 43, and nothing felt reliable. Deos is the first thing that helped me feel more in control again.", "Ama, Accra", "5/5"],
+  ["I remembered my mum going through a similar odor phase and only later understood it was menopause. Deos has made this stage feel less embarrassing for me.", "Esi, Kumasi", "5/5"],
+  ["I honestly feared it was kidney failure or something serious before learning that hormonal changes can affect body odor in this phase. Deos gave me a simple daily routine that supports freshness from within.", "Akua, Tema", "4.5/5"]
 ]
 
 export const relatedProducts = [
