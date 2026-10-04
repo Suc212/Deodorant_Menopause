@@ -17,9 +17,9 @@ export const product = {
   description:
     "Deos is a gentle plant-based body deodorizer made with chlorophyllin and mint, created for women navigating perimenopause, menopause and everyday hormonal changes. It supports fresher underarms, breath, intimate areas and daily confidence from within.",
   images: [
-    "/deos-body-deodorizer-477480.webp",
-    "/deos-body-deodorizer-987562.webp",
-    "/deos-body-deodorizer-899244.webp",
+    "/Deos with model.png",
+    "/Floating Deos bottle in sage light.png",
+    "/Twin Deos Bottles on Wet Tropical Leaf.png",
     "/deos-body-deodorizer-500758.webp",
     "/IngredientsBreakdown.webp"
   ],
