@@ -1,4 +1,5 @@
 import DeosLanding from "@/components/deos-landing"
+import MetaPixel from "@/components/meta-pixel"
 
 export const metadata = {
   title: "Deos | Korretdeals",
@@ -6,5 +7,5 @@ export const metadata = {
 }
 
 export default function DeosPage() {
-  return <DeosLanding />
+  return <><MetaPixel /><DeosLanding /></>
 }

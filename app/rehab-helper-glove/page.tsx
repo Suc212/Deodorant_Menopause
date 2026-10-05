@@ -1,4 +1,5 @@
 import RehabHelperGloveLanding from "@/components/rehab-helper-glove-landing"
+import MetaPixel from "@/components/meta-pixel"
 
 export const metadata = {
   title: "Rehab Helper Glove | Korretdeals",
@@ -6,5 +7,5 @@ export const metadata = {
 }
 
 export default function RehabHelperGlovePage() {
-  return <RehabHelperGloveLanding />
+  return <><MetaPixel /><RehabHelperGloveLanding /></>
 }
