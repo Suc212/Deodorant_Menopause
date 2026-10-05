@@ -1,4 +1,5 @@
 import Link from "next/link"
+import MetaPixel from "@/components/meta-pixel"
 
 export const metadata = {
   title: "Order Confirmed | Korretdeals",
@@ -23,7 +24,9 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
   const productName = params?.product || "your product"
 
   return (
-    <main className="success-page">
+    <>
+      <MetaPixel />
+      <main className="success-page">
       <section className="success-panel">
         <a className="logo" href="/">Korretdeals<small>All the best deals in one store</small></a>
         <div className="success-mark">OK</div>
@@ -37,6 +40,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
           <Link className="btn line" href={getOrderAgainPath(productName)}>Place another order</Link>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   )
 }
