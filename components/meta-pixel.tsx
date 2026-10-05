@@ -15,8 +15,17 @@ export default function MetaPixel() {
           t.src=v;s=b.getElementsByTagName(e)[0];
           s.parentNode.insertBefore(t,s)}(window, document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '${META_PIXEL_ID}');
+
+          window.korretdealsMetaPixelId = '${META_PIXEL_ID}';
+
+          if (!window.korretdealsMetaPixelInitialized) {
+            fbq('init', '${META_PIXEL_ID}');
+            window.korretdealsMetaPixelInitialized = true;
+          }
+
           fbq('track', 'PageView');
+          window.korretdealsMetaPixelReady = true;
+          window.dispatchEvent(new Event('korretdeals:meta-pixel-ready'));
         `}
       </Script>
       <noscript>

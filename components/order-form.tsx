@@ -69,7 +69,16 @@ export default function OrderForm({ selectedPackageId, onPackageChange, productD
         throw new Error(result?.error ?? "There was an error submitting your order.")
       }
 
-      router.push(`/success?reference=${encodeURIComponent(result?.reference ?? "")}&product=${encodeURIComponent(productData.name)}`)
+      const reference = result?.reference ?? ""
+
+      if (reference) {
+        sessionStorage.setItem(
+          `korretdeals:order-saved:${reference}`,
+          JSON.stringify({ productId: productData.id, productName: productData.name, savedAt: new Date().toISOString() })
+        )
+      }
+
+      router.push(`/success?reference=${encodeURIComponent(reference)}&product=${encodeURIComponent(productData.name)}`)
     } catch (submitError) {
       setError(submitError instanceof Error ? submitError.message : "There was an error submitting your order.")
     } finally {
