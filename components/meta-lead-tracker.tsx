@@ -9,7 +9,7 @@ declare global {
   }
 }
 
-type MetaLeadTrackerProps = {
+type MetaPurchaseTrackerProps = {
   reference?: string
   productName: string
 }
@@ -34,16 +34,16 @@ function hasMarketingConsent() {
   return true
 }
 
-export default function MetaLeadTracker({ reference, productName }: MetaLeadTrackerProps) {
+export default function MetaPurchaseTracker({ reference, productName }: MetaPurchaseTrackerProps) {
   useEffect(() => {
     if (!reference) {
       return
     }
 
     const savedOrderKey = `korretdeals:order-saved:${reference}`
-    const leadTrackedKey = `korretdeals:meta-lead-tracked:${reference}`
+    const leadTrackedKey = `korretdeals:meta-purchase-tracked:${reference}`
 
-    const fireLead = () => {
+    const firePurchase = () => {
       const savedOrder = sessionStorage.getItem(savedOrderKey)
       const alreadyTracked = localStorage.getItem(leadTrackedKey)
 
@@ -51,7 +51,7 @@ export default function MetaLeadTracker({ reference, productName }: MetaLeadTrac
         return
       }
 
-      window.fbq("track", "Lead", {
+      window.fbq("track", "Purchase", {
         content_name: productName,
         order_reference: reference
       })
@@ -59,12 +59,12 @@ export default function MetaLeadTracker({ reference, productName }: MetaLeadTrac
     }
 
     if (window.korretdealsMetaPixelReady) {
-      fireLead()
+      firePurchase()
       return
     }
 
-    window.addEventListener("korretdeals:meta-pixel-ready", fireLead, { once: true })
-    return () => window.removeEventListener("korretdeals:meta-pixel-ready", fireLead)
+    window.addEventListener("korretdeals:meta-pixel-ready", firePurchase, { once: true })
+    return () => window.removeEventListener("korretdeals:meta-pixel-ready", firePurchase)
   }, [productName, reference])
 
   return null
