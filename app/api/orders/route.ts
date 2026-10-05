@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { z } from "zod"
-import { formatPrice, product } from "@/lib/product"
+import { allProducts, formatPrice, product, type ProductData } from "@/lib/product"
 
 const orderSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -9,6 +9,7 @@ const orderSchema = z.object({
   email: z.string().email().optional().or(z.literal("")),
   phone: z.string().min(1, "Phone number is required"),
   whatsapp: z.string().min(1, "WhatsApp number is required"),
+  productId: z.string().min(1, "Product is required").optional(),
   packageId: z.string().min(1, "Package is required"),
   notes: z.string().optional()
 })
@@ -18,7 +19,7 @@ type OrderData = z.infer<typeof orderSchema>
 type SavedOrder = {
   reference: string
   product: string
-  package: (typeof product.options)[number]
+  package: ProductData["options"][number]
   customer: OrderData
   status: "pending"
   createdAt: string
@@ -120,7 +121,7 @@ function buildOrderEmailHtml(order: SavedOrder) {
   const customerName = `${order.customer.firstName} ${order.customer.lastName}`.trim()
 
   return `
-    <h2>New Deos Order Received</h2>
+    <h2>New ${escapeHtml(order.product)} Order Received</h2>
     <h3>Order Summary</h3>
     <ul>
       <li><strong>Name:</strong> ${escapeHtml(customerName)}</li>
@@ -188,7 +189,7 @@ async function sendOrderNotification(order: SavedOrder) {
       body: JSON.stringify({
         from,
         to: recipients,
-        subject: `New Deos order: ${order.reference}`,
+        subject: `New ${order.product} order: ${order.reference}`,
         html: buildOrderEmailHtml(order)
       })
     })
@@ -211,15 +212,16 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     const orderData = orderSchema.parse(body)
-    const selectedPackage = product.options.find((option) => option.id === orderData.packageId)
+    const selectedProduct = allProducts.find((item) => item.id === (orderData.productId ?? product.id)) ?? product
+    const selectedPackage = selectedProduct.options.find((option) => option.id === orderData.packageId)
 
     if (!selectedPackage) {
       return NextResponse.json({ error: "Selected package is not available" }, { status: 400 })
     }
 
     const order: SavedOrder = {
-      reference: `DEOS-${Date.now()}`,
-      product: product.name,
+      reference: `${selectedProduct.orderPrefix}-${Date.now()}`,
+      product: selectedProduct.name,
       package: selectedPackage,
       customer: orderData,
       status: "pending",

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">Rehab Helper Glove</title>
+  <desc id="desc">Minimal product illustration of an adjustable hand rehabilitation glove.</desc>
+  <rect width="900" height="900" fill="#e0eadb"/>
+  <circle cx="676" cy="188" r="94" fill="#cfdccb" opacity="0.8"/>
+  <circle cx="195" cy="680" r="142" fill="#eff5ec" opacity="0.9"/>
+  <g transform="translate(160 110)">
+    <path d="M336 184c18-63 98-50 96 17l-3 111 31-109c19-66 103-47 91 19l-37 196 28-57c30-62 107-29 84 35l-87 241c-26 73-96 120-173 116l-122-7c-71-4-132-52-153-120L30 424c-16-53 57-84 85-36l52 90 3-276c1-64 84-70 96-8l20 109 5-122c3-68 92-73 101-6l14 107 30-98Z" fill="#fbfdfa" stroke="#1f3a27" stroke-width="18" stroke-linejoin="round"/>
+    <path d="M161 545c88 20 179 19 273-2" fill="none" stroke="#8a9f85" stroke-width="18" stroke-linecap="round"/>
+    <path d="M190 613c78 16 157 16 237-1" fill="none" stroke="#8a9f85" stroke-width="18" stroke-linecap="round"/>
+    <path d="M126 397c74 16 154 7 239-28" fill="none" stroke="#2f5a34" stroke-width="16" stroke-linecap="round" opacity="0.75"/>
+    <rect x="172" y="602" width="296" height="92" rx="28" fill="#2f5a34" opacity="0.95"/>
+    <path d="M210 648h218" stroke="#dce8d8" stroke-width="18" stroke-linecap="round"/>
+    <circle cx="458" cy="648" r="18" fill="#dce8d8"/>
+  </g>
+</svg>

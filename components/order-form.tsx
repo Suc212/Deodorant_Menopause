@@ -4,7 +4,7 @@ import type React from "react"
 import { useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Loader2 } from "lucide-react"
-import { formatPrice, product } from "@/lib/product"
+import { formatPrice, product, type ProductData } from "@/lib/product"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -34,17 +34,18 @@ const initialFormData: FormDataState = {
 type OrderFormProps = {
   selectedPackageId: string
   onPackageChange: (packageId: string) => void
+  productData?: ProductData
 }
 
-export default function OrderForm({ selectedPackageId, onPackageChange }: OrderFormProps) {
+export default function OrderForm({ selectedPackageId, onPackageChange, productData = product }: OrderFormProps) {
   const [formData, setFormData] = useState(initialFormData)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState("")
   const router = useRouter()
 
   const selectedPackage = useMemo(
-    () => product.options.find((option) => option.id === selectedPackageId) ?? product.options[0],
-    [selectedPackageId]
+    () => productData.options.find((option) => option.id === selectedPackageId) ?? productData.options[0],
+    [productData, selectedPackageId]
   )
 
   const handleInputChange = (field: keyof FormDataState, value: string) => {
@@ -60,7 +61,7 @@ export default function OrderForm({ selectedPackageId, onPackageChange }: OrderF
       const response = await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, packageId: selectedPackageId })
+        body: JSON.stringify({ ...formData, productId: productData.id, packageId: selectedPackageId })
       })
       const result = await response.json().catch(() => null)
 
@@ -68,7 +69,7 @@ export default function OrderForm({ selectedPackageId, onPackageChange }: OrderF
         throw new Error(result?.error ?? "There was an error submitting your order.")
       }
 
-      router.push(`/success?reference=${encodeURIComponent(result?.reference ?? "")}`)
+      router.push(`/success?reference=${encodeURIComponent(result?.reference ?? "")}&product=${encodeURIComponent(productData.name)}`)
     } catch (submitError) {
       setError(submitError instanceof Error ? submitError.message : "There was an error submitting your order.")
     } finally {
@@ -81,7 +82,7 @@ export default function OrderForm({ selectedPackageId, onPackageChange }: OrderF
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{product.name}</CardTitle>
+        <CardTitle>{productData.name}</CardTitle>
         <p>We will contact you within 24-48 hours to confirm your order and delivery details.</p>
       </CardHeader>
       <CardContent>
@@ -121,7 +122,7 @@ export default function OrderForm({ selectedPackageId, onPackageChange }: OrderF
           <div className="field-group">
             <Label htmlFor="packageId">Package *</Label>
             <select id="packageId" className="field-control" value={selectedPackageId} onChange={(event) => onPackageChange(event.target.value)} required>
-              {product.options.map((option) => (
+              {productData.options.map((option) => (
                 <option key={option.id} value={option.id}>{option.label}</option>
               ))}
             </select>
