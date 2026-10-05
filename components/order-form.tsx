@@ -2,6 +2,7 @@
 
 import type React from "react"
 import { useMemo, useState } from "react"
+import { useRouter } from "next/navigation"
 import { Loader2 } from "lucide-react"
 import { formatPrice, product } from "@/lib/product"
 import { Button } from "@/components/ui/button"
@@ -38,8 +39,8 @@ type OrderFormProps = {
 export default function OrderForm({ selectedPackageId, onPackageChange }: OrderFormProps) {
   const [formData, setFormData] = useState(initialFormData)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState("")
+  const router = useRouter()
 
   const selectedPackage = useMemo(
     () => product.options.find((option) => option.id === selectedPackageId) ?? product.options[0],
@@ -67,7 +68,7 @@ export default function OrderForm({ selectedPackageId, onPackageChange }: OrderF
         throw new Error(result?.error ?? "There was an error submitting your order.")
       }
 
-      setSubmitted(true)
+      router.push(`/success?reference=${encodeURIComponent(result?.reference ?? "")}`)
     } catch (submitError) {
       setError(submitError instanceof Error ? submitError.message : "There was an error submitting your order.")
     } finally {
@@ -75,18 +76,7 @@ export default function OrderForm({ selectedPackageId, onPackageChange }: OrderF
     }
   }
 
-  if (submitted) {
-    return (
-      <Card className="success-card">
-        <CardContent>
-          <div className="success-mark">OK</div>
-          <h3>Order submitted successfully</h3>
-          <p>Thank you. We will contact you on WhatsApp or phone to confirm delivery details.</p>
-          <Button type="button" onClick={() => { setSubmitted(false); setFormData(initialFormData) }}>Place another order</Button>
-        </CardContent>
-      </Card>
-    )
-  }
+
 
   return (
     <Card>
