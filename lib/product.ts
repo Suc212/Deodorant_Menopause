@@ -112,8 +112,8 @@ export type ProductData = {
   tabs: string[][]
 }
 export const benefits = [
-  ["Hormonal freshness support", "Made for women who notice stronger body odor, sweat changes or intimate freshness concerns during perimenopause and menopause."],
-  ["Freshness from within", "Because the odor can be linked to hormonal changes, covering it only on the outside with perfume or deodorant may not be enough. Deos supports freshness from within."],
+  ["Hormonal odor support", "Made for women who notice stronger body odor, sweat changes or intimate freshness concerns during perimenopause and menopause."],
+  ["Fixes odor from within", "Because the odor can be linked to hormonal changes, covering it only on the outside with perfume or deodorant may not be enough. Deos supports freshness from within."],
   ["Gentle daily routine", "Chlorophyllin and mint create a simple once-daily habit that fits easily into your menopause wellness routine."]
 ]
 
