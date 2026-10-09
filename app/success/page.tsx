@@ -1,6 +1,5 @@
 import Link from "next/link"
 import MetaPixel from "@/components/meta-pixel"
-import MetaLeadTracker from "@/components/meta-lead-tracker"
 
 export const metadata = {
   title: "Order Confirmed | Korretdeals",
@@ -27,7 +26,6 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
   return (
     <>
       <MetaPixel />
-      <MetaLeadTracker reference={reference} productName={productName} />
       <main className="success-page">
       <section className="success-panel">
         <a className="logo" href="/">Korretdeals<small>All the best deals in one store</small></a>

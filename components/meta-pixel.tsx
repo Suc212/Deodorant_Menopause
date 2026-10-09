@@ -1,6 +1,6 @@
 import Script from "next/script"
 
-const META_PIXEL_ID = "2341234879984111"
+const META_PIXEL_ID = "1787217188987668"
 
 export default function MetaPixel() {
   return (
@@ -16,16 +16,8 @@ export default function MetaPixel() {
           s.parentNode.insertBefore(t,s)}(window, document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
 
-          window.korretdealsMetaPixelId = '${META_PIXEL_ID}';
-
-          if (!window.korretdealsMetaPixelInitialized) {
-            fbq('init', '${META_PIXEL_ID}');
-            window.korretdealsMetaPixelInitialized = true;
-          }
-
+          fbq('init', '${META_PIXEL_ID}');
           fbq('track', 'PageView');
-          window.korretdealsMetaPixelReady = true;
-          window.dispatchEvent(new Event('korretdeals:meta-pixel-ready'));
         `}
       </Script>
       <noscript>
