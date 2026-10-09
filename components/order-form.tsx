@@ -65,17 +65,21 @@ export default function OrderForm({ selectedPackageId, onPackageChange, productD
       })
       const result = await response.json().catch(() => null)
 
-      if (!response.ok) {
+      if (!response.ok || result?.success !== true || typeof result?.reference !== "string" || !result.reference) {
         throw new Error(result?.error ?? "There was an error submitting your order.")
       }
 
       const reference = result?.reference ?? ""
 
       if (reference) {
-        sessionStorage.setItem(
-          `korretdeals:order-saved:${reference}`,
-          JSON.stringify({ productId: productData.id, productName: productData.name, savedAt: new Date().toISOString() })
-        )
+        try {
+          sessionStorage.setItem(
+            `korretdeals:order-saved:${reference}`,
+            JSON.stringify({ success: true, reference, productId: productData.id, productName: productData.name, savedAt: new Date().toISOString() })
+          )
+        } catch {
+          // Storage restrictions must not prevent a successfully saved order from redirecting.
+        }
       }
 
       router.push(`/success?reference=${encodeURIComponent(reference)}&product=${encodeURIComponent(productData.name)}`)

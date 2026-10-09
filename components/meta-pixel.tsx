@@ -16,8 +16,12 @@ export default function MetaPixel() {
           s.parentNode.insertBefore(t,s)}(window, document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
 
-          fbq('init', '${META_PIXEL_ID}');
+          if (!window.korretdealsMetaPixelInitialized) {
+            fbq('init', '${META_PIXEL_ID}');
+            window.korretdealsMetaPixelInitialized = true;
+          }
           fbq('track', 'PageView');
+          window.dispatchEvent(new Event('korretdeals:meta-pixel-ready'));
         `}
       </Script>
       <noscript>
