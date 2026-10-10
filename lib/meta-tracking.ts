@@ -20,7 +20,7 @@ export function trackSavedPurchase(reference: string, pixel: TrackingWindow, ses
 
     // Persist before queueing so repeated effects and revisits cannot queue a duplicate.
     local.setItem(trackedKey, new Date().toISOString())
-    pixel.fbq("track", "purchase")
+    pixel.fbq("track", "Purchase")
   } catch {
     // Without readable proof and persistent deduplication, do not send a conversion.
   }
