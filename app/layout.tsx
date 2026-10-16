@@ -1,6 +1,10 @@
 import type { Metadata } from "next"
 import Script from "next/script"
+import { Cormorant_Garamond, Jost } from "next/font/google"
 import "./globals.css"
+
+const headingFont = Cormorant_Garamond({ subsets: ["latin"], display: "swap", variable: "--font-heading" })
+const bodyFont = Jost({ subsets: ["latin"], display: "swap", variable: "--font-body" })
 
 export const metadata: Metadata = {
   title: "Korretdeals",
@@ -9,10 +13,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${headingFont.variable} ${bodyFont.variable}`}>
       <body>
         {children}
-        <Script id="microsoft-clarity" strategy="afterInteractive">
+        <Script id="microsoft-clarity" strategy="lazyOnload">
           {`
             (function(c,l,a,r,i,t,y){
               c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

@@ -32,7 +32,7 @@ export default function HomePage() {
           </p>
         </div>
         <Link className="hero-product" href={`/${featuredProduct.slug}`} aria-label={`View ${featuredProduct.name} product page`}>
-          <img src={featuredProduct.images[0]} alt={featuredProduct.name} />
+          <img src={featuredProduct.images[0]} alt={featuredProduct.name} width={1122} height={1402} fetchPriority="high" loading="eager" decoding="async" />
           <div>
             <span>{featuredProduct.category}</span>
             <strong>{featuredProduct.name}</strong>
@@ -53,7 +53,7 @@ export default function HomePage() {
             return (
               <article className="shop-card" key={item.id}>
                 <Link className="shop-card-image" href={`/${item.slug}`}>
-                  <img src={item.images[0]} alt={item.name} />
+                  <img src={item.images[0]} alt={item.name} width={item.id === "deos" ? 1122 : 900} height={item.id === "deos" ? 1402 : 900} loading="lazy" decoding="async" />
                 </Link>
                 <div className="shop-card-body">
                   <div className="shop-card-meta">

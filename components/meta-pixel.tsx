@@ -2,10 +2,10 @@ import Script from "next/script"
 
 const META_PIXEL_ID = "1787217188987668"
 
-export default function MetaPixel() {
+export default function MetaPixel({ strategy = "lazyOnload" }: { strategy?: "lazyOnload" | "afterInteractive" }) {
   return (
     <>
-      <Script id="meta-pixel" strategy="afterInteractive">
+      <Script id="meta-pixel" strategy={strategy}>
         {`
           !function(f,b,e,v,n,t,s)
           {if(f.fbq)return;n=f.fbq=function(){n.callMethod?

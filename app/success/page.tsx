@@ -26,7 +26,7 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
 
   return (
     <>
-      <MetaPixel />
+      <MetaPixel strategy="afterInteractive" />
       <MetaPurchaseTracker reference={reference} />
       <main className="success-page">
       <section className="success-panel">

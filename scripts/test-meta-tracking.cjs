@@ -49,4 +49,18 @@ assert.equal(calls.length, 1, 'Storage errors must fail closed')
 const freshLocal = storage()
 trackSavedPurchase(reference, pixel, session, freshLocal)
 assert.equal(calls.length, 2, 'No consent requirement configured permits tracking')
+// A saved purchase must survive the pixel library loading after page hydration.
+const deferredSession = storage()
+const deferredLocal = storage()
+const deferredPixel = {}
+const deferredReference = 'DEOS-deferred'
+deferredSession.setItem(`korretdeals:order-saved:${deferredReference}`, JSON.stringify({ success: true, reference: deferredReference, savedAt: 'today' }))
+trackSavedPurchase(deferredReference, deferredPixel, deferredSession, deferredLocal)
+assert.equal(deferredLocal.getItem(`korretdeals:meta-purchase-tracked:${deferredReference}`), null, 'A purchase must remain pending until the deferred pixel initializes')
+const queuedEvents = []
+deferredPixel.fbq = (...args) => queuedEvents.push(args)
+deferredPixel.korretdealsMetaPixelInitialized = true
+trackSavedPurchase(deferredReference, deferredPixel, deferredSession, deferredLocal)
+trackSavedPurchase(deferredReference, deferredPixel, deferredSession, deferredLocal)
+assert.deepEqual(queuedEvents, [['track', 'Purchase']], 'Deferred initialization must queue exactly one purchase')
 console.log('Meta tracking checks passed')
