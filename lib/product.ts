@@ -22,11 +22,11 @@ export const product = {
   listingDescription:
     "Daily internal freshness support for women navigating perimenopause, menopause and hormonal body changes.",
   images: [
-    "/Deos with model.png",
-    "/Floating Deos bottle in sage light.png",
-    "/Twin Deos Bottles on Wet Tropical Leaf.png",
-    "/Deos bottles with fresh mint and herbs.png",
-    "/Falling Green Capsules and Fresh Herbs.png"
+    "/Deos with model.avif",
+    "/Floating Deos bottle in sage light.avif",
+    "/Twin Deos Bottles on Wet Tropical Leaf.avif",
+    "/Deos bottles with fresh mint and herbs.avif",
+    "/Falling Green Capsules and Fresh Herbs.avif"
   ],
   options: [
     { id: "1-bottle-450", label: "1 Bottle + Free Delivery", detail: "1 Bottle + Free Delivery", price: 450 },
